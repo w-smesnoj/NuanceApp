@@ -1,11 +1,13 @@
 <template>
   <nav>
-    <div>
+    <div class="toggle">
       <button class="bars" @click="toggleSidebar">
         <fa fa="bars" v-if="!sidebar_toggle" />
         <fa fa="times" v-else />
       </button>
-      <button class="logo"><fa fa="behance" /></button>
+      <button class="logo">
+        <fa fa="behance" />
+      </button>
     </div>
     <div class="center">
       <div class="link">
@@ -18,22 +20,31 @@
       </div>
     </div>
     <div class="social">
-      <button><fa fa="search" /></button>
-      <button><fa fa="envelope" /></button>
-      <button><fa fa="bell" /></button>
+      <button>
+        <fa fa="search" />
+      </button>
+      <button>
+        <fa fa="envelope" />
+      </button>
+      <button>
+        <fa fa="bell" />
+      </button>
+      <router-link to="/profile">
+        <div><fa fa="circle" /></div>
+      </router-link>
     </div>
   </nav>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters } from 'vuex';
 export default {
-  name: "NavigationBar",
+  name: 'NavigationBar',
   computed: {
-    ...mapGetters(["sidebar_toggle"]),
+    ...mapGetters(['sidebar_toggle']),
   },
   methods: {
-    ...mapActions(["toggleSidebar"]),
+    ...mapActions(['toggleSidebar']),
   },
 };
 </script>
@@ -44,12 +55,14 @@ export default {
     display: none !important;
   }
 } */
-
+.toggle {
+  display: inline-flex;
+}
 nav {
   min-height: 60px;
   background: var(--bg-alt);
   color: var(--txt-main-od);
-  display: flex;
+  display: grid;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -67,11 +80,12 @@ button:focus {
   outline: 0px !important;
 }
 nav .center {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  /* grid-template-columns: auto 1fr; */
   /* width: 100%; */
-  height: 100%;
+  height: 60px;
   place-items: center;
+  overflow: hidden;
 }
 .logo {
   text-align: left;
@@ -86,7 +100,17 @@ nav .center {
 
   padding: 0px 15px;
 }
+
+.social a {
+  display: grid;
+  align-content: center;
+  padding: 0px 15px;
+  width: auto;
+}
 .social button {
+  /* display: grid;
+  align-content: center; */
+  /* width: auto !important; */
   padding: 0px 15px;
   width: auto;
 }
@@ -97,7 +121,7 @@ nav .center {
   height: 100%;
   display: inline-flex;
   flex-wrap: wrap;
-  grid-auto-flow: column;
+  justify-content: center;
 }
 .link a div {
   display: grid;
