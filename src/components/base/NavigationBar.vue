@@ -14,7 +14,7 @@
         <router-link to="/">
           <div><fa fa="home" /> Home</div>
         </router-link>
-        <router-link to="/about">
+        <router-link to="/discover">
           <div><fa fa="compass" /> Discover</div>
         </router-link>
       </div>
@@ -65,6 +65,8 @@ nav {
   display: grid;
   justify-content: space-between;
   flex-wrap: wrap;
+  position: fixed;
+  width: 100%;
 }
 button {
   width: 60px;

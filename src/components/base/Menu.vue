@@ -148,13 +148,13 @@ export default {
 }
 .menu {
   width: auto;
+  box-sizing: border-box;
   max-width: 350px;
   color: white;
   overflow-y: scroll;
   background-color: var(--bg-alt);
   z-index: 200;
   padding-top: 1em;
-  /* padding: 15px; */
   box-sizing: border-box;
   padding-bottom: 50vh;
   left: -350px;
@@ -176,9 +176,12 @@ aside {
   grid-row: 2/2;
   grid-column: 1;
   z-index: 100;
-  height: 100%;
+  height: fit-content;
   width: 100%;
+  position: fixed;
+  margin: 60px 0px;
   pointer-events: none;
+  box-sizing: border-box;
 }
 .active {
   pointer-events: all !important;

@@ -1,11 +1,17 @@
 <template>
   <div id="app">
-    <NavigationBar />
+    <div class="hold">
+      <NavigationBar />
+    </div>
     <Menu />
     <div id="view">
-      <router-view />
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
-    <FooterBar />
+    <div class="hold">
+      <FooterBar />
+    </div>
   </div>
 </template>
 
@@ -38,12 +44,18 @@ export default {
 </script>
 
 <style>
+.hold {
+  height: 60px;
+  z-index: 100;
+}
+
 :root {
   --bg-main: #ffffff;
   --bg-scnd: #f2f2f2;
   --bg-alt: #191919;
   --txt-main: #191919;
   --txt-accent: #959595;
+  --txt-accent-dark: #696969;
   --txt-main-od: #ffffff; /* on dark */
   --accent: #0057ff;
 }
@@ -56,16 +68,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: default;
-  /* height: 100vh; */
-  /* max-height: 100vh; */
-  height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   display: grid;
   grid-auto-rows: auto 1fr;
-  overflow: hidden;
+  overflow: auto;
+  height: auto;
 }
 #view {
-  overflow-y: scroll;
   grid-row: 2;
   grid-column: 1;
 }

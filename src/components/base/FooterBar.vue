@@ -5,7 +5,7 @@
         <router-link to="/">
           <div><fa fa="home" /> <span>Home</span></div>
         </router-link>
-        <router-link to="/about">
+        <router-link to="/discover">
           <div><fa fa="compass" /><span>Discover</span></div>
         </router-link>
         <router-link to="/search">
@@ -32,6 +32,9 @@ footer {
   height: 60px;
   background: var(--bg-alt);
   border-top: 1px solid var(--txt-accent);
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 .center {
   height: 100%;
