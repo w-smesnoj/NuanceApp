@@ -5,18 +5,19 @@
     <div id="view">
       <router-view />
     </div>
-    <footer></footer>
+    <FooterBar />
   </div>
 </template>
 
 <script>
 // import { mapMutations } from "vuex";
 import NavigationBar from '@/components/base/NavigationBar.vue';
+import FooterBar from '@/components/base/FooterBar.vue';
 import Menu from '@/components/base/Menu.vue';
 
 export default {
   name: 'App',
-  components: { NavigationBar, Menu },
+  components: { NavigationBar, Menu, FooterBar },
   data: () => ({}),
   mounted() {
     // 100vh #app solution for mobile devices
@@ -37,11 +38,6 @@ export default {
 </script>
 
 <style>
-footer {
-  z-index: 100;
-  background: red;
-  color: white;
-}
 :root {
   --bg-main: #ffffff;
   --bg-scnd: #f2f2f2;
