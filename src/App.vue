@@ -11,14 +11,23 @@
 
 <script>
 // import { mapMutations } from "vuex";
-import NavigationBar from "@/components/base/NavigationBar.vue";
-import Menu from "@/components/base/Menu.vue";
+import NavigationBar from '@/components/base/NavigationBar.vue';
+import Menu from '@/components/base/Menu.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: { NavigationBar, Menu },
   data: () => ({}),
-  mounted() {},
+  mounted() {
+    // 100vh #app solution for mobile devices
+    // https://stackoverflow.com/a/53883824
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    window.addEventListener('resize', () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
+  },
   methods: {
     // ...mapMutations({
     //   setWidth: "set_width",
@@ -47,11 +56,14 @@ body {
   padding: 0px;
 }
 #app {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: default;
+  /* height: 100vh; */
+  /* max-height: 100vh; */
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   display: grid;
   grid-auto-rows: auto 1fr;
   overflow: hidden;
@@ -66,8 +78,9 @@ button,
 a {
   cursor: pointer;
   transition: color 0.1s;
+  text-decoration: none;
 }
-
-span {
+a:visited {
+  color: var(--txt-accent);
 }
 </style>

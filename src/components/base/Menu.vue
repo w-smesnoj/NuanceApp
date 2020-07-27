@@ -1,69 +1,134 @@
 <template>
   <aside :class="classObject">
-    <transition name="slide">
-      <div class="menu" v-if="sidebar_toggle">
-        <h1>First One</h1>
-        <h4>Title</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, alias
-          velit. Ex eum pariatur asperiores blanditiis delectus aperiam
-          cupiditate provident quidem reiciendis odit, commodi vero cum quaerat
-          laudantium, dolor vitae fugit nisi illum facilis iusto saepe hic
-          eveniet distinctio! Odit?
-        </p>
-        <h4>Title</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, alias
-          velit. Ex eum pariatur asperiores blanditiis delectus aperiam
-          cupiditate provident quidem reiciendis odit, commodi vero cum quaerat
-          laudantium, dolor vitae fugit nisi illum facilis iusto saepe hic
-          eveniet distinctio! Odit?
-        </p>
-        <h4>Title</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, alias
-          velit. Ex eum pariatur asperiores blanditiis delectus aperiam
-          cupiditate provident quidem reiciendis odit, commodi vero cum quaerat
-          laudantium, dolor vitae fugit nisi illum facilis iusto saepe hic
-          eveniet distinctio! Odit?
-        </p>
-        <h4>Title</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, alias
-          velit. Ex eum pariatur asperiores blanditiis delectus aperiam
-          cupiditate provident quidem reiciendis odit, commodi vero cum quaerat
-          laudantium, dolor vitae fugit nisi illum facilis iusto saepe hic
-          eveniet distinctio! Odit?
-        </p>
-        <h1>Last One</h1>
+    <!-- <transition name="slide"> -->
+    <div class="menu" :class="[sidebar_toggle ? 'sidebarShow' : '']">
+      <!-- v-if="sidebar_toggle" -->
+      <div class="links" ref="links">
+        <router-link to="/">
+          <div><fa fa="home" />Home</div>
+        </router-link>
+        <router-link to="/discover">
+          <div><fa fa="compass" />Discover</div>
+        </router-link>
+        <router-link to="/about">
+          <div><fa fa="info" />About</div>
+        </router-link>
+        <router-link to="/settings">
+          <div><fa fa="gear" />Settings</div>
+        </router-link>
       </div>
-    </transition>
+      <div class="seperator"></div>
+      <div class="links">
+        <a>
+          <div><fa fa="sign-out" />Logout</div>
+        </a>
+        <a>
+          <div><fa fa="align-left" />TOU</div>
+        </a>
+        <a>
+          <div><fa fa="user-secret" />Privacy</div>
+        </a>
+        <a>
+          <div><fa fa="comments" />Community</div>
+        </a>
+        <a>
+          <div><fa fa="plus" />More Nuance <fa fa="caret-down" /></div>
+        </a>
+        <a>
+          <div><fa fa="globe" />English <fa fa="caret-down" /></div>
+        </a>
+      </div>
+
+      <!-- <h1>First One</h1>
+      <h4>Title</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, alias
+        velit. Ex eum pariatur asperiores blanditiis delectus aperiam cupiditate
+        provident quidem reiciendis odit, commodi vero cum quaerat laudantium,
+        dolor vitae fugit nisi illum facilis iusto saepe hic eveniet distinctio!
+        Odit?
+      </p>
+      <h4>Title</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, alias
+        velit. Ex eum pariatur asperiores blanditiis delectus aperiam cupiditate
+        provident quidem reiciendis odit, commodi vero cum quaerat laudantium,
+        dolor vitae fugit nisi illum facilis iusto saepe hic eveniet distinctio!
+        Odit?
+      </p>
+      <h4>Title</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, alias
+        velit. Ex eum pariatur asperiores blanditiis delectus aperiam cupiditate
+        provident quidem reiciendis odit, commodi vero cum quaerat laudantium,
+        dolor vitae fugit nisi illum facilis iusto saepe hic eveniet distinctio!
+        Odit?
+      </p>
+      <h4>Title</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, alias
+        velit. Ex eum pariatur asperiores blanditiis delectus aperiam cupiditate
+        provident quidem reiciendis odit, commodi vero cum quaerat laudantium,
+        dolor vitae fugit nisi illum facilis iusto saepe hic eveniet distinctio!
+        Odit?
+      </p>
+      <h1>Last One</h1> -->
+    </div>
+    <!-- </transition> -->
 
     <transition name="fade">
-      <div class="bg" v-if="sidebar_toggle"></div>
+      <div class="bg" v-if="sidebar_toggle" @click="toggleSidebar"></div>
     </transition>
   </aside>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from 'vuex';
 export default {
-  name: "Menu",
+  name: 'Menu',
   computed: {
-    ...mapGetters(["sidebar_toggle"]),
+    ...mapGetters(['sidebar_toggle']),
     classObject: function() {
       return {
         active: this.sidebar_toggle,
       };
     },
   },
-  // methods: {
-  //   ...mapActions(["toggleSidebar"]),
-  // },
+  mounted() {
+    // let elms = document.querySelector('.links');
+    console.log(this.$refs.links);
+    this.$refs.links.childNodes.forEach((link) => {
+      link.addEventListener('click', this.toggleSidebar);
+    });
+  },
+
+  methods: {
+    ...mapActions(['toggleSidebar']),
+  },
 };
 </script>
 
 <style scoped>
+.links a div i {
+  place-self: center;
+}
+.links a div {
+  align-items: center;
+
+  padding: 15px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 2em 1fr;
+  gap: 1em;
+}
+.seperator {
+  width: -webkit-fill-available;
+  height: 1px;
+  margin: 1em;
+  box-sizing: border-box;
+  background: var(--txt-accent);
+}
+
 .slide-enter-active,
 .slide-leave-active {
   transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
@@ -78,6 +143,9 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+.sidebarShow {
+  left: 0% !important;
+}
 .menu {
   width: auto;
   max-width: 350px;
@@ -85,9 +153,13 @@ export default {
   overflow-y: scroll;
   background-color: var(--bg-alt);
   z-index: 200;
-  padding: 15px;
+  padding-top: 1em;
+  /* padding: 15px; */
   box-sizing: border-box;
   padding-bottom: 50vh;
+  left: -350px;
+  position: relative;
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .bg {
   grid-column: 1/2;
@@ -120,6 +192,9 @@ aside {
 a:hover,
 a.router-link-exact-active {
   color: var(--txt-main-od);
+}
+a {
+  color: var(--txt-accent);
 }
 
 .menu::-webkit-scrollbar {
