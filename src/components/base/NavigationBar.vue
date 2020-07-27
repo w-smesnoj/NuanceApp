@@ -50,11 +50,11 @@ export default {
 </script>
 
 <style scoped>
-/* @media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
   .link {
     display: none !important;
   }
-} */
+}
 .toggle {
   display: inline-flex;
 }

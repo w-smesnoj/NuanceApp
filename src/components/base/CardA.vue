@@ -12,7 +12,9 @@
       <span>
         <div class="profile" ref="profile"></div>
         <router-link to="/profile">
-          <span>{{ project.author }}</span>
+          <!-- <span> -->
+          {{ project.author }}
+          <!-- </span> -->
           <!-- <div><fa fa="compass" /> Discover</div> -->
         </router-link>
       </span>
@@ -127,13 +129,15 @@ export default {
   grid-auto-columns: auto 1fr;
   align-items: center;
   gap: 0.65em;
-  color: var(--txt-main);
 }
-.info span span {
+.info span a {
+  flex: 1;
+  max-width: calc(404px - 130px);
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  flex-wrap: nowrap;
+  color: var(--txt-main);
 }
 .info div {
   display: grid;
