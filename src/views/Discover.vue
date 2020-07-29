@@ -3,7 +3,7 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <CardA
       v-for="project in projects"
-      :key="project.title"
+      :key="project.likes"
       :project="project"
     />
   </div>
@@ -11,13 +11,19 @@
 
 <script>
 // @ is an alias to /src
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import CardA from '@/components/base/CardA.vue';
 
 export default {
   name: 'Home',
   computed: mapGetters(['projects']),
+  mounted() {
+    this.getProjects();
+  },
   data: () => ({}),
+  methods: {
+    ...mapActions(['getProjects']),
+  },
   components: {
     CardA,
   },
