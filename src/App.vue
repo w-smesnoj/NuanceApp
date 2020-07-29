@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <div class="hold">
-      <NavigationBar />
-    </div>
+    <NavigationBar />
     <Menu />
     <div id="view">
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
     </div>
-    <div class="hold">
-      <FooterBar />
-    </div>
+    <FooterBar />
   </div>
 </template>
 
@@ -44,11 +40,6 @@ export default {
 </script>
 
 <style>
-.hold {
-  height: 60px;
-  z-index: 100;
-}
-
 :root {
   --bg-main: #ffffff;
   --bg-scnd: #f2f2f2;
@@ -68,7 +59,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: default;
-  height: calc(var(--vh, 1vh) * 100);
+  /* height: calc(var(--vh, 1vh) * 100); */
   display: grid;
   grid-auto-rows: auto 1fr;
   overflow: auto;
@@ -77,6 +68,7 @@ body {
 #view {
   grid-row: 2;
   grid-column: 1;
+  padding: 60px 0px;
 }
 
 button,

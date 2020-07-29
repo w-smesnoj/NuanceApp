@@ -3,6 +3,12 @@
     <!-- <transition name="slide"> -->
     <div class="menu" :class="[sidebar_toggle ? 'sidebarShow' : '']">
       <!-- v-if="sidebar_toggle" -->
+      <div class="links">
+        <a @click="toggleSidebar">
+          <div><fa fa="times" /></div>
+        </a>
+      </div>
+
       <div class="links" ref="links">
         <router-link to="/">
           <div><fa fa="home" />Home</div>
@@ -119,6 +125,7 @@ export default {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 2em 1fr;
+  grid-template-columns: 2em 1fr;
   gap: 1em;
 }
 .seperator {
@@ -151,12 +158,12 @@ export default {
   box-sizing: border-box;
   max-width: 350px;
   color: white;
-  overflow-y: scroll;
   background-color: var(--bg-alt);
   z-index: 200;
   padding-top: 1em;
   box-sizing: border-box;
   padding-bottom: 50vh;
+  overflow-y: scroll;
   left: -350px;
   position: relative;
   transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -176,12 +183,11 @@ aside {
   grid-row: 2/2;
   grid-column: 1;
   z-index: 100;
-  height: fit-content;
   width: 100%;
-  position: fixed;
-  margin: 60px 0px;
+  height: 100%;
   pointer-events: none;
   box-sizing: border-box;
+  position: fixed;
 }
 .active {
   pointer-events: all !important;

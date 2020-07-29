@@ -67,6 +67,7 @@ nav {
   flex-wrap: wrap;
   position: fixed;
   width: 100%;
+  z-index: 100;
 }
 button {
   width: 60px;
