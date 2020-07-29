@@ -124,9 +124,9 @@ export default {
 </style>
 
 <style scoped>
-.cardA {
-  max-width: 350px;
-}
+/* .cardA { */
+/* max-width: 400px; */
+/* } */
 .card {
   position: relative;
   border-radius: 0.25em;
@@ -159,7 +159,7 @@ export default {
 .profile {
   width: 1.4em;
   height: 1.4em;
-  background: red;
+  background: gray;
   border-radius: 100px;
 }
 .profile {
