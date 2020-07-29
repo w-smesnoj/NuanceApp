@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav :class="{ shownav: scrollingDown }">
     <div class="toggle">
       <button class="bars" @click="toggleSidebar">
         <fa fa="bars" v-if="!sidebar_toggle" />
@@ -40,11 +40,25 @@
 import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'NavigationBar',
+  data: () => ({
+    oldScroll: 0,
+    scrollingDown: false,
+  }),
+  mounted() {
+    let x = document.querySelector('body');
+    x.addEventListener('scroll', this.setOldScroll);
+  },
   computed: {
     ...mapGetters(['sidebar_toggle']),
   },
   methods: {
     ...mapActions(['toggleSidebar']),
+    setOldScroll(e) {
+      this.oldScroll > e.target.scrollTop
+        ? (this.scrollingDown = false)
+        : (this.scrollingDown = true);
+      this.oldScroll = e.target.scrollTop;
+    },
   },
 };
 </script>
@@ -68,6 +82,11 @@ nav {
   position: fixed;
   width: 100%;
   z-index: 100;
+  margin-top: 0px;
+  transition: margin 0.2s;
+}
+.shownav {
+  margin-top: -60px !important;
 }
 button {
   width: 60px;
