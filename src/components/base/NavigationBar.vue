@@ -45,19 +45,18 @@ export default {
     scrollingDown: false,
   }),
   mounted() {
-    let x = document.querySelector('body');
-    x.addEventListener('scroll', this.setOldScroll);
+    document.addEventListener('scroll', this.setOldScroll);
   },
   computed: {
     ...mapGetters(['sidebar_toggle']),
   },
   methods: {
     ...mapActions(['toggleSidebar']),
-    setOldScroll(e) {
-      this.oldScroll > e.target.scrollTop
+    setOldScroll() {
+      this.oldScroll > window.scrollY
         ? (this.scrollingDown = false)
         : (this.scrollingDown = true);
-      this.oldScroll = e.target.scrollTop;
+      this.oldScroll = window.scrollY;
     },
   },
 };
