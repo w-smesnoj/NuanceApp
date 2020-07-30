@@ -139,7 +139,7 @@ export default {
 .card span {
   position: absolute;
   bottom: 0px;
-  /* height: 25%; */
+  width: -webkit-fill-available;
   background: black;
   color: white;
   display: flex;

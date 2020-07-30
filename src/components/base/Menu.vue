@@ -166,7 +166,7 @@ export default {
   overflow-y: scroll;
   left: -350px;
   position: relative;
-  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .bg {
   grid-column: 1/2;
