@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Discover from '../views/Discover.vue';
+import Project from '../views/Project/Project.vue';
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,11 @@ const routes = [
     path: '/discover',
     name: 'Discover',
     component: Discover,
+  },
+  {
+    path: '/project',
+    name: 'Project',
+    component: Project,
   },
   {
     path: '/about',
@@ -34,3 +40,5 @@ const router = new VueRouter({
 });
 
 export default router;
+
+Vue.use(VueRouter);

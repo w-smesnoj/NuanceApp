@@ -20,10 +20,15 @@
           ></div>
           <span>
             {{ project.title }}
+            <div class="simple" v-if="simple">
+              <span> {{ project.author }} </span>
+              <div><fa fas="thumbs-up" />{{ formatK(project.likes) }}</div>
+              <div><fa fas="eye" /> {{ formatK(project.views) }}</div>
+            </div>
           </span>
         </div>
       </router-link>
-      <div class="info">
+      <div class="info" v-if="!simple">
         <span>
           <div
             class="profile"
@@ -47,6 +52,7 @@
 export default {
   props: {
     project: Object,
+    simple: Boolean,
   },
   mounted() {},
   computed: {},
@@ -75,10 +81,6 @@ export default {
 .slide-fade-enter-active {
   transition: all 0.1s ease-out;
 }
-/* {
-  transform: translateY(-5px) scale(1.02);
-  opacity: 0;
-} */
 .slide-fade-enter,
 .slide-fade-leave-to {
   transform: translateY(5px) scale(0.98);
@@ -118,15 +120,11 @@ export default {
 }
 .skeleton div {
   height: 1.4em;
-  /* background: gray; */
   border-radius: 100px;
 }
 </style>
 
 <style scoped>
-/* .cardA { */
-/* max-width: 400px; */
-/* } */
 .card {
   position: relative;
   border-radius: 0.25em;
@@ -136,13 +134,13 @@ export default {
 .card:hover span {
   opacity: 1;
 }
-.card span {
+.card > span {
   position: absolute;
   bottom: 0px;
   width: -webkit-fill-available;
   background: black;
   color: white;
-  display: flex;
+  display: grid;
   align-items: flex-end;
   padding: 1em;
   padding-top: 3em;
@@ -173,6 +171,26 @@ export default {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+.simple {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1em;
+  font-weight: 400;
+  font-size: 0.8em;
+  height: 1.8em !important;
+  align-content: flex-end !important;
+}
+.simple div {
+  color: white !important;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.8em;
+}
+.simple span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .info {
   display: grid;
