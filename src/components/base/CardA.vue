@@ -4,7 +4,7 @@
       <div class="card ">
         <div class="bg animation"></div>
       </div>
-      <div class="info skeleton">
+      <div class="info skeleton" v-if="!simple">
         <div></div>
         <div></div>
         <div></div>
@@ -125,6 +125,9 @@ export default {
 </style>
 
 <style scoped>
+i {
+  place-self: center;
+}
 .card {
   position: relative;
   border-radius: 0.25em;
@@ -186,6 +189,7 @@ export default {
   display: grid;
   grid-auto-flow: column;
   gap: 0.8em;
+  font-weight: 600;
 }
 .simple span {
   overflow: hidden;
@@ -221,6 +225,7 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   color: var(--txt-main);
+  font-weight: 600;
 }
 .info div {
   display: grid;
