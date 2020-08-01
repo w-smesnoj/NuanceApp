@@ -43,6 +43,7 @@ export default {
 :root {
   --bg-main: #ffffff;
   --bg-scnd: #f2f2f2;
+  --bg-third: #fafafa;
   --bg-alt: #191919;
   --txt-main: #191919;
   --txt-accent: #959595;

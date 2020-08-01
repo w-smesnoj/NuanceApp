@@ -1,7 +1,7 @@
 <template>
   <button
     class="default"
-    :class="{ round: round, rounded: rounded, white: white }"
+    :class="{ round: round, rounded: rounded, white: white, link: link }"
   >
     <slot></slot>
   </button>
@@ -13,6 +13,7 @@ export default {
     round: Boolean,
     rounded: Boolean,
     white: Boolean,
+    link: Boolean,
   },
 };
 </script>
@@ -40,7 +41,26 @@ button {
   width: 1em;
   height: 1em;
 }
+.round > i {
+  font-size: 1em;
+}
 .rounded {
   border-radius: 100px;
+}
+.link {
+  background-color: transparent;
+  font-weight: 600;
+  border: 0px;
+  color: #0057ff;
+  width: 100%;
+  cursor: pointer;
+  padding: 10px;
+  text-transform: none;
+  overflow: visible;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: 0.03em;
 }
 </style>

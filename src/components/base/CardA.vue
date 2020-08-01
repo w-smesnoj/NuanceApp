@@ -49,20 +49,17 @@
 </template>
 
 <script>
+import mixinFunctions from '@/store/modules/misc.js';
+
 export default {
+  mixins: [mixinFunctions],
   props: {
     project: Object,
     simple: Boolean,
   },
   mounted() {},
   computed: {},
-  methods: {
-    formatK(num) {
-      return Math.abs(num) > 999
-        ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + 'k'
-        : Math.sign(num) * Math.abs(num);
-    },
-  },
+  methods: {},
   components: {},
 };
 </script>
@@ -156,6 +153,7 @@ i {
   );
   opacity: 0;
   transition: opacity 0.2s;
+  line-height: 1.5em;
 }
 .profile {
   width: 1.4em;
@@ -183,6 +181,7 @@ i {
   font-size: 0.8em;
   height: 1.8em !important;
   align-content: flex-end !important;
+  line-height: initial;
 }
 .simple div {
   color: white !important;
